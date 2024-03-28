@@ -134,3 +134,9 @@ Verbose Level = DEBUG
 
 The Research Products will be stored in the `FILENAME` file.
 
+## References
+
+* [OpenAIRE APIs for developers](https://egi.openaire.eu/develop)
+* [Zenodo Community dump](https://zenodo.org/records/10521976)
+  
+
