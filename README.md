@@ -23,7 +23,7 @@ Edit the `openrc.sh` file and configure the settings.
 export OPENAIRE_API_SERVER_URL="https://api.openaire.eu/"
 export OPENAIRE_COMMUNITY="egi"
 
-**export OPENAIRE_RESEARCH_PRODUCT="publications"**
+export OPENAIRE_RESEARCH_PRODUCT="publications"
 
 # Data format: YYYY-MM-DD
 export OPENAIRE_FROM_DATE_OF_ACCEPTANCE="2023-01-01"
