@@ -130,9 +130,9 @@ Verbose Level = DEBUG
   |--> To = 2023-12-31
 ```
 
-The selected **Research Products** downloaded from the EGI's OpenAIRE dashboard will be stored in the `FILENAME`
+The selected **Research Products** downloaded from the EGI's OpenAIRE dashboard will be stored in `FILENAME`
 
-Research Products will be parsed with the [xml.etree.ElementTree](https://docs.python.org/3/library/xml.etree.elementtree.html) library
+Research Products will be parsed with the [xml.etree.ElementTree](https://docs.python.org/3/library/xml.etree.elementtree.html) python library
 
 ## References
 
