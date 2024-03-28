@@ -37,3 +37,37 @@ export FILENAME="OA_research_products.xml"
 # LOG=DEBUG, verbose logging is 'ON'
 export LOG="DEBUG"
 ```
+
+## Retrieve the list of Publications from the OpenAIRE's dashboard (in the specific period)
+
+```bash
+$ source openrc.sh && python3 get_research_products.py
+
+Verbose Level = DEBUG
+
+[INFO] 	Environment settings
+{
+    "OPENAIRE_API_SERVER_URL": "https://api.openaire.eu/",
+    "OPENAIRE_COMMUNITY": "egi",
+    "OPENAIRE_OPEN_ACCESS": "false",
+    "OPENAIRE_RESEARCH_PRODUCT": "publications",
+    "OPENAIRE_FROM_DATE_OF_ACCEPTANCE": "2023-01-01",
+    "OPENAIRE_TO_DATE_OF_ACCEPTANCE": "2023-12-31",
+    "OPENAIRE_PAGE_SIZE": "10",
+    "LOG": "DEBUG",
+    "FILENAME": "OA_research_products.xml"
+}
+
+[INFO] 	Download the list of *PUBLICATIONS* from the EGI's OpenAIRE dashboard in progress..
+	This operation may take few minutes. Please wait!
+[INFO] 	List of the first [10] **Publications**
+[..]
+
+[SUMMARY REPORT]
+- OpenAIRE Research Products
+[INFO] PUBLICATIONS
+  |--> Total = 2875
+[REPORTING PERIOD]
+  |--> From = 2023-01-01
+  |--> To = 2023-12-31
+
