@@ -48,8 +48,9 @@ Depending by the Research Products interested to query from the [EGI's OpenAIRE 
 
 To access all the **publications**
 
-```bash
 Edit the `openrc.sh` file and add the settings:
+
+```bash
 export OPENAIRE_RESEARCH_PRODUCT="publications"
 export OPENAIRE_OPEN_ACCESS="false"
 ```
@@ -58,8 +59,9 @@ export OPENAIRE_OPEN_ACCESS="false"
 
 To access all the **Open Access publications**
 
-```bash
 Edit the `openrc.sh` file and add the settings:
+
+```bash
 export OPENAIRE_RESEARCH_PRODUCT="publications"
 export OPENAIRE_OPEN_ACCESS="true"
 ```
@@ -68,8 +70,9 @@ export OPENAIRE_OPEN_ACCESS="true"
 
 To access all the research **datasets**
 
-```bash
 Edit the `openrc.sh` file and add the settings:
+
+```bash
 export OPENAIRE_RESEARCH_PRODUCT="datasets"
 ```
 
@@ -77,8 +80,9 @@ export OPENAIRE_RESEARCH_PRODUCT="datasets"
 
 To access the research **software**
 
-```bash
 Edit the `openrc.sh` file and add the settings:
+
+```bash
 export OPENAIRE_RESEARCH_PRODUCT="software"
 ```
 
@@ -86,8 +90,9 @@ export OPENAIRE_RESEARCH_PRODUCT="software"
 
 To access all the **Research products** (Publications, Research data, Research software, Other research products)
 
-```bash
 Edit the `openrc.sh` file and add the settings:
+
+```bash
 export OPENAIRE_RESEARCH_PRODUCT="researchProducts"
 ```
 
@@ -95,17 +100,18 @@ export OPENAIRE_RESEARCH_PRODUCT="researchProducts"
 
 To access all the **other** research products
 
-```bash
 Edit the `openrc.sh` file and add the settings:
+
+```bash
 export OPENAIRE_RESEARCH_PRODUCT="other"
 ```
 
 ## Retrieve the Research Products from the OpenAIRE's dashboard (in the specific period)
 
 ```bash
-$ source openrc.sh && python3 get_research_products.py
+$ clear && source openrc.sh && python3 get_research_products.py
 
-Verbose Level = DEBUG
+Verbose Level = INFO
 
 [INFO] 	Environment settings
 {
@@ -119,11 +125,6 @@ Verbose Level = DEBUG
     "LOG": "DEBUG",
     "FILENAME": "OA_research_products.xml"
 }
-
-[INFO] 	Download the list of *PUBLICATIONS* from the EGI's OpenAIRE dashboard in progress...
-	This operation may take few minutes. Please wait!
-[INFO] 	List of the first [10] Publications
-[..]
 
 [SUMMARY REPORT]
 - OpenAIRE Research Products
