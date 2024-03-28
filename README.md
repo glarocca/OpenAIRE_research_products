@@ -1,5 +1,5 @@
 # OpenAIRE_research_products
-This repository use the APIs to extract **Research Products** from the [EGI's OpenAIRE dashboard](https://egi.openaire.eu/).
+This repository use the APIs to extract **Research Products** from the [EGI's OpenAIRE dashboard](https://egi.openaire.eu/)
 
 Available **Research Products** are: 
 - Publications,
@@ -7,7 +7,7 @@ Available **Research Products** are:
 - Research software, and
 - Other research products.
 
-For more details, please check the [OpenAIRE APIs for developers](https://egi.openaire.eu/develop).
+For more details, please check the [OpenAIRE APIs for developers](https://egi.openaire.eu/develop)
 
 The selected **Research Products** downloaded from the [EGI's OpenAIRE dashboard](https://egi.openaire.eu/) will be stored in `FILENAME`
 
@@ -120,7 +120,7 @@ Verbose Level = DEBUG
     "FILENAME": "OA_research_products.xml"
 }
 
-[INFO] 	Download the list of *PUBLICATIONS* from the [EGI's OpenAIRE dashboard](https://egi.openaire.eu/) in progress..
+[INFO] 	Download the list of *PUBLICATIONS* from the EGI's OpenAIRE dashboard in progress...
 	This operation may take few minutes. Please wait!
 [INFO] 	List of the first [10] Publications
 [..]
