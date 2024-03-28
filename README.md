@@ -12,8 +12,6 @@ For more details, please check the [OpenAIRE APIs for developers](https://egi.op
 ## Pre-requisites
 * `Python 3.10.12+` installed on your local compute
 
-## Access all the Publications research product
-
 ## Configure the general settings
 
 Edit the `openrc.sh` file and configure the settings.
@@ -38,7 +36,7 @@ export FILENAME="OA_research_products.xml"
 export LOG="DEBUG"
 ```
 
-## Configure the Research Products to query
+## Select the Research Products to query
 
 Depending by the Research Products interested to query from the EGI's OpenAIRE dashboard, configure the additional environmental variable:
 
