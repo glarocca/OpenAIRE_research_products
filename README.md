@@ -98,7 +98,7 @@ Edit the `openrc.sh` file and add the settings:
 export OPENAIRE_RESEARCH_PRODUCT="other"
 ```
 
-## Retrieve the Publications from the OpenAIRE's dashboard (in the specific period)
+## Retrieve the Research Products from the OpenAIRE's dashboard (in the specific period)
 
 ```bash
 $ source openrc.sh && python3 get_research_products.py
@@ -130,4 +130,7 @@ Verbose Level = DEBUG
 [REPORTING PERIOD]
   |--> From = 2023-01-01
   |--> To = 2023-12-31
+```
+
+The Research Products will be stored in the `FILENAME` file.
 
