@@ -52,7 +52,7 @@ export OPENAIRE_OPEN_ACCESS="false"
 
 ### Research Products (Open Access publications)
 
-To access all the **publications**
+To access all the **Open Access publications**
 
 ```bash
 Edit the `openrc.sh` file and add the settings:
