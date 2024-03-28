@@ -14,7 +14,7 @@ For more details, please check the online OpenAIRE APIs [documentation](https://
 
 ## Access all the Publications research product
 
-## Edit the environmental settings
+## Configure the general settings
 
 Edit the `openrc.sh` file and configure the settings.
 
