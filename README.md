@@ -70,7 +70,7 @@ export OPENAIRE_OPEN_ACCESS="true"
 
 To access all the research **datasets**
 
-Edit the `openrc.sh` file and add the settings:
+Edit the `openrc.sh` file and add the setting:
 
 ```bash
 export OPENAIRE_RESEARCH_PRODUCT="datasets"
@@ -80,7 +80,7 @@ export OPENAIRE_RESEARCH_PRODUCT="datasets"
 
 To access the research **software**
 
-Edit the `openrc.sh` file and add the settings:
+Edit the `openrc.sh` file and add the setting:
 
 ```bash
 export OPENAIRE_RESEARCH_PRODUCT="software"
@@ -90,7 +90,7 @@ export OPENAIRE_RESEARCH_PRODUCT="software"
 
 To access all the **Research products** (Publications, Research data, Research software, Other research products)
 
-Edit the `openrc.sh` file and add the settings:
+Edit the `openrc.sh` file and add the setting:
 
 ```bash
 export OPENAIRE_RESEARCH_PRODUCT="researchProducts"
@@ -100,7 +100,7 @@ export OPENAIRE_RESEARCH_PRODUCT="researchProducts"
 
 To access all the **other** research products
 
-Edit the `openrc.sh` file and add the settings:
+Edit the `openrc.sh` file and add the setting:
 
 ```bash
 export OPENAIRE_RESEARCH_PRODUCT="other"
