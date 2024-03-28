@@ -121,52 +121,53 @@ def main():
     verbose = env['LOG']
     print("\nVerbose Level = %s" %colourise("cyan", verbose))
 
-    print(colourise("cyan", "\n[INFO]"), "\tEnvironment settings")
+    print(colourise("cyan", "\n[%s]" %env['LOG']), " Variables settings")
     if verbose == "DEBUG":
        print(json.dumps(env, indent=4))
 
     # Download the full list of the OpenAIRE Research Products
     if env['OPENAIRE_RESEARCH_PRODUCT'] == "publications":
-       print(colourise("cyan", "\n[INFO]"), \
-               "\tDownload the list of *PUBLICATIONS* from the EGI's OpenAIRE dashboard in progress..")
+       print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " Download the list of *PUBLICATIONS* from the EGI's OpenAIRE dashboard in progress..")
     if env['OPENAIRE_RESEARCH_PRODUCT'] == "datasets":
-       print(colourise("cyan", "\n[INFO]"), \
-               "\tDownload the list of *DATASETS* from the EGI's OpenAIRE dashboard in progress..")
+       print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " Download the list of *DATASETS* from the EGI's OpenAIRE dashboard in progress..")
     if env['OPENAIRE_RESEARCH_PRODUCT'] == "sotfware":
-       print(colourise("cyan", "\n[INFO]"), \
-               "\tDownload the list of *SOFTWARE* from the EGI's OpenAIRE dashboard in progress..")
+       print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " Download the list of *SOFTWARE* from the EGI's OpenAIRE dashboard in progress..")
     if env['OPENAIRE_RESEARCH_PRODUCT'] == "other":
-       print(colourise("cyan", "\n[INFO]"), \
-               "\tDownload the *OTHER research products* from the EGI's OpenAIRE dashboard in progress..")
+       print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " Download the *OTHER research products* from the EGI's OpenAIRE dashboard in progress..")
     if env['OPENAIRE_RESEARCH_PRODUCT'] == "researchProducts":
-       print(colourise("cyan", "\n[INFO]"), \
-               "\tDownload the list of *RESEARCH PRODUCTS* from the EGI's OpenAIRE dashboard in progress..")
+       print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " Download the list of *RESEARCH PRODUCTS* from the EGI's OpenAIRE dashboard in progress..")
     
-    print("\tThis operation may take few minutes. Please wait!")
+    print("\t This operation may take few minutes. Please wait!")
     get_OpenAIRE_Research_Products(env)
 
     # Parse the XML file
     tot_research_products, research_products = parseXML(env)
 
-    if env['OPENAIRE_OPEN_ACCESS'] == 'true':
-       print(colourise("cyan", "\n[INFO]"), \
-            "\tList of the first [%s] Open Access Publications" %env['OPENAIRE_PAGE_SIZE'])
-    else:
-       print(colourise("cyan", "\n[INFO]"), \
-            "\tList of the first [%s] Publications" %env['OPENAIRE_PAGE_SIZE'])
+    if env['LOG'] == "DEBUG":
+       if env['OPENAIRE_OPEN_ACCESS'] == 'true':
+          print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " List of the first [%s] Open Access Publications" %env['OPENAIRE_PAGE_SIZE'])
+       else:
+          print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " List of the first [%s] Publications" %env['OPENAIRE_PAGE_SIZE'])
 
-    for research_product in research_products:
-        print(json.dumps(research_product, indent=4))
+       for research_product in research_products:
+           print(json.dumps(research_product, indent=4))
     
     print(colourise("green", "\n[SUMMARY REPORT]"))
     print("- OpenAIRE Research Products")
     if env['OPENAIRE_RESEARCH_PRODUCT'] == "publications":
        if env['OPENAIRE_OPEN_ACCESS'] == "false":
-          print(colourise("green", "[INFO]"), env['OPENAIRE_RESEARCH_PRODUCT'].upper())
+          print(colourise("green", "[%s]" %env['LOG']), env['OPENAIRE_RESEARCH_PRODUCT'].upper())
        else:   
           print("  |--> Type = Open Access Publications")
     else:      
-          print(colourise("green", "[INFO]"), env['OPENAIRE_RESEARCH_PRODUCT'].upper())
+          print(colourise("green", "[%s]" %env['LOG']), env['OPENAIRE_RESEARCH_PRODUCT'].upper())
 
     print("  |--> Total = %s" %tot_research_products)
     print(colourise("green", "[REPORTING PERIOD]"))
