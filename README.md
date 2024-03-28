@@ -9,6 +9,10 @@ Available **Research Products** are:
 
 For more details, please check the [OpenAIRE APIs for developers](https://egi.openaire.eu/develop).
 
+The selected **Research Products** downloaded from the EGI's OpenAIRE dashboard will be stored in `FILENAME`
+
+Research Products will be parsed with the [xml.etree.ElementTree](https://docs.python.org/3/library/xml.etree.elementtree.html) python library
+
 ## Pre-requisites
 * `Python 3.10.12+` installed on your local compute
 
@@ -129,10 +133,6 @@ Verbose Level = DEBUG
   |--> From = 2023-01-01
   |--> To = 2023-12-31
 ```
-
-The selected **Research Products** downloaded from the EGI's OpenAIRE dashboard will be stored in `FILENAME`
-
-Research Products will be parsed with the [xml.etree.ElementTree](https://docs.python.org/3/library/xml.etree.elementtree.html) python library
 
 ## References
 
