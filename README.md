@@ -38,7 +38,7 @@ export LOG="DEBUG"
 
 ## Select the Research Products to query
 
-Depending by the Research Products interested to query from the EGI's OpenAIRE dashboard, configure the additional environmental variable:
+Depending by the Research Products interested to query from the EGI's OpenAIRE dashboard, configure the additional settings:
 
 ### Research Products (publications)
 
