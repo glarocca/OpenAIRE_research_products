@@ -7,7 +7,7 @@ Available **Research Products** are:
 - Research software, and
 - Other research products.
 
-For more details, please check the online OpenAIRE APIs [documentation](https://egi.openaire.eu/develop).
+For more details, please check the [OpenAIRE APIs for developers](https://egi.openaire.eu/develop).
 
 ## Pre-requisites
 * `Python 3.10.12+` installed on your local compute
@@ -38,14 +38,20 @@ export FILENAME="OA_research_products.xml"
 export LOG="DEBUG"
 ```
 
-## Retrieve the Publications from the OpenAIRE's dashboard (in the specific period)
+## Configure the Research Products to query
 
-### Configure the Research Products (publications)
+Depending by the Research Products interested to query from the EGI's OpenAIRE dashboard, configure the additional environmental variable:
+
+### Research Products (publications)
+
+To access all the **publications**
 
 ```bash
 Edit the `openrc.sh` file and add the settings:
 export OPENAIRE_RESEARCH_PRODUCT="publications"
 ```
+
+## Retrieve the Publications from the OpenAIRE's dashboard (in the specific period)
 
 ```bash
 $ source openrc.sh && python3 get_research_products.py
