@@ -49,6 +49,53 @@ To access all the **publications**
 ```bash
 Edit the `openrc.sh` file and add the settings:
 export OPENAIRE_RESEARCH_PRODUCT="publications"
+export OPENAIRE_OPEN_ACCESS="false"
+```
+
+### Research Products (Open Access publications)
+
+To access all the **publications**
+
+```bash
+Edit the `openrc.sh` file and add the settings:
+export OPENAIRE_RESEARCH_PRODUCT="publications"
+export OPENAIRE_OPEN_ACCESS="true"
+```
+
+### Research Products (datasets)
+
+To access all the research **datasets**
+
+```bash
+Edit the `openrc.sh` file and add the settings:
+export OPENAIRE_RESEARCH_PRODUCT="datasets"
+```
+
+### Research Products (software)
+
+To access the research **software**
+
+```bash
+Edit the `openrc.sh` file and add the settings:
+export OPENAIRE_RESEARCH_PRODUCT="software"
+```
+
+### Research Products (researchProducts)
+
+To access all the **Research products** (Publications, Research data, Research software, Other research products)
+
+```bash
+Edit the `openrc.sh` file and add the settings:
+export OPENAIRE_RESEARCH_PRODUCT="researchProducts"
+```
+
+### Research Products (other)
+
+To access all the **other** research products
+
+```bash
+Edit the `openrc.sh` file and add the settings:
+export OPENAIRE_RESEARCH_PRODUCT="other"
 ```
 
 ## Retrieve the Publications from the OpenAIRE's dashboard (in the specific period)
