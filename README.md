@@ -38,7 +38,14 @@ export FILENAME="OA_research_products.xml"
 export LOG="DEBUG"
 ```
 
-## Retrieve the list of Publications from the OpenAIRE's dashboard (in the specific period)
+## Retrieve the Publications from the OpenAIRE's dashboard (in the specific period)
+
+### Configure the Research Products (publications)
+
+```bash
+Edit the `openrc.sh` file and add the settings:
+export OPENAIRE_RESEARCH_PRODUCT="publications"
+```
 
 ```bash
 $ source openrc.sh && python3 get_research_products.py
@@ -60,7 +67,7 @@ Verbose Level = DEBUG
 
 [INFO] 	Download the list of *PUBLICATIONS* from the EGI's OpenAIRE dashboard in progress..
 	This operation may take few minutes. Please wait!
-[INFO] 	List of the first [10] **Publications**
+[INFO] 	List of the first [10] Publications
 [..]
 
 [SUMMARY REPORT]
