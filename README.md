@@ -55,7 +55,7 @@ Verbose Level = DEBUG
     "FILENAME": "OA_research_products.xml"
 }
 
-[DEBUG]  Downloading *Research Products* from the EGI\'s OpenAIRE dashboard in progress
+[DEBUG]  Downloading *Research Products* from the OpenAIRE dashboard in progress
 	 This operation may take few minutes. Please wait!
 
 [ SUMMARY REPORT ]
