@@ -29,24 +29,16 @@ __copyright__ = "Copyright (c) 2024 EGI Foundation"
 __license__   = "Apache Licence v2.0"
 
 
-def get_OpenAIRE_Research_Products(env): 
+def get_OpenAIRE_Research_Products(env, research_product): 
     ''' Get the full list of Open Access Research Products from the OpenAIRE dashboard '''
   
-    if env['OPENAIRE_RESEARCH_PRODUCT'] == "publications":
-          url = env['OPENAIRE_API_SERVER_URL'] \
-              + "search/" + env['OPENAIRE_RESEARCH_PRODUCT'] +"?community=" + env['OPENAIRE_COMMUNITY'] \
-              + "&fromDateAccepted=" + env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'] \
-              + "&toDateAccepted=" + env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'] \
-              + "&size=" + env['OPENAIRE_PAGE_SIZE'] \
-              + "&OA=" + env['OPENAIRE_OPEN_ACCESS'] \
-              + "&sortBy=resultdateofacceptance,descending"
-    else:
-        url = env['OPENAIRE_API_SERVER_URL'] \
-              + "search/" + env['OPENAIRE_RESEARCH_PRODUCT'] +"?community=" + env['OPENAIRE_COMMUNITY'] \
-              + "&fromDateAccepted=" + env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'] \
-              + "&toDateAccepted=" + env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'] \
-              + "&size=" + env['OPENAIRE_PAGE_SIZE'] \
-              + "&sortBy=resultdateofacceptance,descending"
+    url = env['OPENAIRE_API_SERVER_URL'] \
+          + "search/" + research_product \
+          + "?community=" + env['OPENAIRE_COMMUNITY'] \
+          + "&fromDateAccepted=" + env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'] \
+          + "&toDateAccepted=" + env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'] \
+          + "&size=" + env['OPENAIRE_PAGE_SIZE'] \
+          + "&sortBy=resultdateofacceptance,descending"
 
     #print(url)
     resp = requests.get(url) 
@@ -66,9 +58,9 @@ def parseXML(env):
 
     # Initialize the variables
     title = acceptance = creator = subject = publisher = ""
-    size = page = tot_publications = 0
-    publication = {}
-    publications = []
+    size = page = tot_research_products = 0
+    research_product = {}
+    research_products = []
 
     for child in root:
         if child.tag == "header":
@@ -79,7 +71,7 @@ def parseXML(env):
                if entry.tag == "page":
                    page = entry.text
                if entry.tag == "total":
-                   tot_publications = entry.text
+                   tot_research_products = entry.text
     
     for results in root.findall('./results/result/metadata/'):
         for child in results:
@@ -97,7 +89,7 @@ def parseXML(env):
                    if entry.tag == "dateofacceptance":
                       acceptance = entry.text
 
-                   publication = {
+                   research_product = {
                      "Title": title,
                      "Creator(s)": creator,
                      "Subject": subject,
@@ -105,9 +97,9 @@ def parseXML(env):
                      "DateOfAcceptance" : acceptance
                    }
 
-               publications.append(publication)
+               research_products.append(research_product)
 
-    return(tot_publications, publications)
+    return(tot_research_products, research_products)
 
 
 
@@ -126,53 +118,28 @@ def main():
        print(json.dumps(env, indent=4))
 
     # Download the full list of the OpenAIRE Research Products
-    if env['OPENAIRE_RESEARCH_PRODUCT'] == "publications":
-       print(colourise("cyan", "\n[%s]" %env['LOG']), \
-               " Download the list of *PUBLICATIONS* from the EGI's OpenAIRE dashboard in progress..")
-    if env['OPENAIRE_RESEARCH_PRODUCT'] == "datasets":
-       print(colourise("cyan", "\n[%s]" %env['LOG']), \
-               " Download the list of *DATASETS* from the EGI's OpenAIRE dashboard in progress..")
-    if env['OPENAIRE_RESEARCH_PRODUCT'] == "sotfware":
-       print(colourise("cyan", "\n[%s]" %env['LOG']), \
-               " Download the list of *SOFTWARE* from the EGI's OpenAIRE dashboard in progress..")
-    if env['OPENAIRE_RESEARCH_PRODUCT'] == "other":
-       print(colourise("cyan", "\n[%s]" %env['LOG']), \
-               " Download the *OTHER research products* from the EGI's OpenAIRE dashboard in progress..")
-    if env['OPENAIRE_RESEARCH_PRODUCT'] == "researchProducts":
-       print(colourise("cyan", "\n[%s]" %env['LOG']), \
-               " Download the list of *RESEARCH PRODUCTS* from the EGI's OpenAIRE dashboard in progress..")
+    print(colourise("cyan", "\n[%s]" %env['LOG']), \
+               " Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress")
     
     print("\t This operation may take few minutes. Please wait!")
-    get_OpenAIRE_Research_Products(env)
-
-    # Parse the XML file
-    tot_research_products, research_products = parseXML(env)
-
-    if env['LOG'] == "DEBUG":
-       if env['OPENAIRE_OPEN_ACCESS'] == 'true':
-          print(colourise("cyan", "\n[%s]" %env['LOG']), \
-               " List of the first [%s] Open Access Publications" %env['OPENAIRE_PAGE_SIZE'])
-       else:
-          print(colourise("cyan", "\n[%s]" %env['LOG']), \
-               " List of the first [%s] Publications" %env['OPENAIRE_PAGE_SIZE'])
-
-       for research_product in research_products:
-           print(json.dumps(research_product, indent=4))
     
-    print(colourise("green", "\n[SUMMARY REPORT]"))
-    print("- OpenAIRE Research Products")
-    if env['OPENAIRE_RESEARCH_PRODUCT'] == "publications":
-       if env['OPENAIRE_OPEN_ACCESS'] == "false":
-          print(colourise("green", "[%s]" %env['LOG']), env['OPENAIRE_RESEARCH_PRODUCT'].upper())
-       else:   
-          print("  |--> Type = Open Access Publications")
-    else:      
-          print(colourise("green", "[%s]" %env['LOG']), env['OPENAIRE_RESEARCH_PRODUCT'].upper())
+    print(colourise("green", "\n[ SUMMARY REPORT ]"))
+    print("- OpenAIRE Research Products (RPs)")
+   
+    research_products = {"publications", "datasets", "software", "other", "researchProducts"}
 
-    print("  |--> Total = %s" %tot_research_products)
-    print(colourise("green", "[REPORTING PERIOD]"))
-    print("  |--> From = %s" %env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'])
-    print("  |--> To = %s" %env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
+    for product in research_products:
+        get_OpenAIRE_Research_Products(env, product)
+
+        # Parse the XML file
+        tot_research_products, research_products = parseXML(env)
+
+        print(colourise("green", "\n[TYPE]"), product.upper())
+        print("       |--> Total = %s" %tot_research_products)
+    
+    print(colourise("green", "\n[REPORTING PERIOD]"))
+    print("  |--> From  = %s" %env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'])
+    print("  |--> To    = %s" %env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
     
 
 if __name__ == "__main__":
