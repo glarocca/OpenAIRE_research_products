@@ -25,6 +25,47 @@ __date__      = "$Date: 03/11/2023 11:58:27"
 __copyright__ = "Copyright (c) 2023 EGI Foundation"
 __license__   = "Apache Licence v2.0"
 
+
+def find_difference(activeVOs_1, activeVOs_2):
+    ''' Find difference between two strings ''' 
+
+    arrivingVOs_list = []
+    leavingVOs_list = []
+
+    # Splitting strings into list items
+    activeVOs_1 = activeVOs_1.split(", ")
+    activeVOs_2 = activeVOs_2.split(", ")
+
+    # Store string list items in set
+    A = set(activeVOs_1)
+    B = set(activeVOs_2)
+    str_diff = A.symmetric_difference(B)
+    
+    isEmpty = (len(str_diff) == 0)
+
+    if isEmpty:
+       str_diff = ""
+  
+    # Iterating using for loop
+    for value in str_diff:
+        if value in activeVOs_1 and value not in activeVOs_2:
+            leavingVOs_list.append(value)
+        if value in activeVOs_2 and value not in activeVOs_1:    
+            arrivingVOs_list.append(value)
+
+    # Convert python list() to str()
+    arrivingVOs_str = ', '.join([str(elem) for elem in arrivingVOs_list])
+    leavingVOs_str = ', '.join([str(elem) for elem in leavingVOs_list])
+
+    if arrivingVOs_str == "":
+        arrivingVOs_str = "-"
+
+    if leavingVOs_str == "":
+        leavingVOs_str = "-"
+
+    return(arrivingVOs_str, leavingVOs_str)
+
+
 def colourise(colour, text):
     ''' Colourise - colours text in shell. '''
     ''' Returns plain if colour doesn't exist '''
@@ -70,6 +111,7 @@ def highlight(colour, text):
         return "\033[1;47m" + str(text) + "\033[1;m"
     return str(text)
 
+
 def get_env_settings():
         ''' Reading profile settings from env '''
 
@@ -81,7 +123,6 @@ def get_env_settings():
            # OpenAIRE parameters
            d['OPENAIRE_COMMUNITY'] = os.environ['OPENAIRE_COMMUNITY']
            d['OPENAIRE_OPEN_ACCESS'] = os.environ['OPENAIRE_OPEN_ACCESS']
-           d['OPENAIRE_RESEARCH_PRODUCT'] = os.environ['OPENAIRE_RESEARCH_PRODUCT']
            d['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'] = os.environ['OPENAIRE_FROM_DATE_OF_ACCEPTANCE']
            d['OPENAIRE_TO_DATE_OF_ACCEPTANCE'] = os.environ['OPENAIRE_TO_DATE_OF_ACCEPTANCE']
            d['OPENAIRE_PAGE_SIZE'] = os.environ['OPENAIRE_PAGE_SIZE']
