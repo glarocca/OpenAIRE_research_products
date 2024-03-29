@@ -40,10 +40,10 @@ export FILENAME="OA_research_products.xml"
 export LOG="DEBUG"
 ```
 
-
 ## Retrieve the Research Products from the EGI's OpenAIRE dashboard
 
-```bashVerbose Level = DEBUG
+```bash
+Verbose Level = DEBUG
 
 [DEBUG]  Variables settings
 {
@@ -64,10 +64,10 @@ export LOG="DEBUG"
 - OpenAIRE Research Products (RPs)
 
 [TYPE] PUBLICATIONS
-       |--> Total = 3204
+       |--> Total = 3,204
 
 [TYPE] DATASETS
-       |--> Total = 5353
+       |--> Total = 5,353
 
 [TYPE] SOFTWARE
        |--> Total = 15
@@ -76,7 +76,7 @@ export LOG="DEBUG"
        |--> Total = 131
 
 [TYPE] RESEARCHPRODUCTS
-       |--> Total = 8703
+       |--> Total = 8,703
 
 [REPORTING PERIOD]
   |--> From  = 2023-01-01
