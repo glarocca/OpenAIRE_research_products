@@ -17,7 +17,6 @@ Research Products will be parsed with the [xml.etree.ElementTree](https://docs.p
 * `Python 3.10.12+` installed on your local compute
 
 ## Configure the general settings
-
 Edit the `openrc.sh` file and configure the settings.
 
 ```bash
@@ -41,7 +40,6 @@ export LOG="DEBUG"
 ```
 
 ## Retrieve the Research Products from the EGI's OpenAIRE dashboard
-
 ```bash
 Verbose Level = DEBUG
 
