@@ -108,17 +108,13 @@ export OPENAIRE_RESEARCH_PRODUCT="other"
 
 ## Retrieve the Research Products from the OpenAIRE's dashboard (in the specific period)
 
-```bash
-$ clear && source openrc.sh && python3 get_research_products.py
+```bashVerbose Level = DEBUG
 
-Verbose Level = INFO
-
-[INFO] 	Environment settings
+[DEBUG]  Variables settings
 {
     "OPENAIRE_API_SERVER_URL": "https://api.openaire.eu/",
     "OPENAIRE_COMMUNITY": "egi",
-    "OPENAIRE_OPEN_ACCESS": "false",
-    "OPENAIRE_RESEARCH_PRODUCT": "publications",
+    "OPENAIRE_OPEN_ACCESS": "true",
     "OPENAIRE_FROM_DATE_OF_ACCEPTANCE": "2023-01-01",
     "OPENAIRE_TO_DATE_OF_ACCEPTANCE": "2023-12-31",
     "OPENAIRE_PAGE_SIZE": "10",
@@ -126,13 +122,30 @@ Verbose Level = INFO
     "FILENAME": "OA_research_products.xml"
 }
 
-[SUMMARY REPORT]
-- OpenAIRE Research Products
-[INFO] PUBLICATIONS
-  |--> Total = 2875
+[DEBUG]  Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress
+	 This operation may take few minutes. Please wait!
+
+[ SUMMARY REPORT ]
+- OpenAIRE Research Products (RPs)
+
+[TYPE] PUBLICATIONS
+       |--> Total = 3204
+
+[TYPE] DATASETS
+       |--> Total = 5353
+
+[TYPE] SOFTWARE
+       |--> Total = 15
+
+[TYPE] OTHER
+       |--> Total = 131
+
+[TYPE] RESEARCHPRODUCTS
+       |--> Total = 8703
+
 [REPORTING PERIOD]
-  |--> From = 2023-01-01
-  |--> To = 2023-12-31
+  |--> From  = 2023-01-01
+  |--> To    = 2023-12-31
 ```
 
 ## References
