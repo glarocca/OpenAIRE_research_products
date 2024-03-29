@@ -41,7 +41,7 @@ export LOG="DEBUG"
 ```
 
 
-## Retrieve the Research Products from the EGI's OpenAIRE dashboard (in the specific reporting period)
+## Retrieve the Research Products from the EGI's OpenAIRE dashboard
 
 ```bashVerbose Level = DEBUG
 
