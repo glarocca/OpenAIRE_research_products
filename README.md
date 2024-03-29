@@ -40,73 +40,8 @@ export FILENAME="OA_research_products.xml"
 export LOG="DEBUG"
 ```
 
-## Select the Research Products to query
 
-Depending by the Research Products interested to query from the [EGI's OpenAIRE dashboard](https://egi.openaire.eu/), configure the additional settings:
-
-### Research Products (publications)
-
-To access all the **publications**
-
-Edit the `openrc.sh` file and add the settings:
-
-```bash
-export OPENAIRE_RESEARCH_PRODUCT="publications"
-export OPENAIRE_OPEN_ACCESS="false"
-```
-
-### Research Products (Open Access publications)
-
-To access all the **Open Access publications**
-
-Edit the `openrc.sh` file and add the settings:
-
-```bash
-export OPENAIRE_RESEARCH_PRODUCT="publications"
-export OPENAIRE_OPEN_ACCESS="true"
-```
-
-### Research Products (datasets)
-
-To access all the research **datasets**
-
-Edit the `openrc.sh` file and add the setting:
-
-```bash
-export OPENAIRE_RESEARCH_PRODUCT="datasets"
-```
-
-### Research Products (software)
-
-To access the research **software**
-
-Edit the `openrc.sh` file and add the setting:
-
-```bash
-export OPENAIRE_RESEARCH_PRODUCT="software"
-```
-
-### Research Products (researchProducts)
-
-To access all the **Research products** (Publications, Research data, Research software, Other research products)
-
-Edit the `openrc.sh` file and add the setting:
-
-```bash
-export OPENAIRE_RESEARCH_PRODUCT="researchProducts"
-```
-
-### Research Products (other)
-
-To access all the **other** research products
-
-Edit the `openrc.sh` file and add the setting:
-
-```bash
-export OPENAIRE_RESEARCH_PRODUCT="other"
-```
-
-## Retrieve the Research Products from the OpenAIRE's dashboard (in the specific period)
+## Retrieve the Research Products from the EGI's OpenAIRE dashboard (in the specific reporting period)
 
 ```bashVerbose Level = DEBUG
 
