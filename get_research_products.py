@@ -23,8 +23,8 @@ from utils import colourise, get_env_settings
 
 __author__    = "Giuseppe LA ROCCA"
 __email__     = "giuseppe.larocca@egi.eu"
-__version__   = "$Revision: 0.4"
-__date__      = "$Date: 27/03/2024 18:23:17"
+__version__   = "$Revision: 0.5"
+__date__      = "$Date: 29/03/2024 18:23:17"
 __copyright__ = "Copyright (c) 2024 EGI Foundation"
 __license__   = "Apache Licence v2.0"
 
