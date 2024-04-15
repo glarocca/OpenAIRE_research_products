@@ -61,20 +61,11 @@ Verbose Level = DEBUG
 [ SUMMARY REPORT ]
 - OpenAIRE Research Products (RPs)
 
-[TYPE] PUBLICATIONS
-       |--> Total = 3,204
-
-[TYPE] DATASETS
-       |--> Total = 5,353
-
-[TYPE] SOFTWARE
-       |--> Total = 15
-
-[TYPE] OTHER
-       |--> Total = 131
-
-[TYPE] RESEARCHPRODUCTS
-       |--> Total = 8,703
+[TYPE] PUBLICATIONS, Total 3,204
+[TYPE] DATASETS, Total 5,353
+[TYPE] SOFTWARE, Total 15
+[TYPE] OTHER, Total 131
+[TYPE] RESEARCHPRODUCTS, Total 8,703
 
 [REPORTING PERIOD]
   |--> From  = 2023-01-01
