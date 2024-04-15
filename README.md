@@ -58,15 +58,21 @@ Verbose Level = DEBUG
 [DEBUG]  Downloading *Research Products* from the OpenAIRE dashboard in progress
 	 This operation may take few minutes to complete. Please wait!
 
+Downloading (software) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Downloading (researchProducts) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Downloading (other) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Downloading (publications) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Downloading (datasets) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+
 [REPORT]
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
 ┃ OpenAIRE Research Products     ┃ Total ┃ From       ┃ To         ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━┩
-│ -RESEARCHPRODUCTS              │  8703 │ 2023-01-01 │ 2023-12-31 │
-│ -DATASETS                      │  5353 │ 2023-01-01 │ 2023-12-31 │
-│ -OTHER                         │   131 │ 2023-01-01 │ 2023-12-31 │
-│ -PUBLICATIONS                  │  3204 │ 2023-01-01 │ 2023-12-31 │
-│ -SOFTWARE                      │    15 │ 2023-01-01 │ 2023-12-31 │
+│ -software                      │    15 │ 2023-01-01 │ 2023-12-31 │
+│ -researchProducts              │  8703 │ 2023-01-01 │ 2023-12-31 │
+│ -other                         │   131 │ 2023-01-01 │ 2023-12-31 │
+│ -publications                  │  3204 │ 2023-01-01 │ 2023-12-31 │
+│ -datasets                      │  5353 │ 2023-01-01 │ 2023-12-31 │
 └────────────────────────────────┴───────┴────────────┴────────────┘
 ```
 
