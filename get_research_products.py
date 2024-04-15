@@ -19,12 +19,15 @@ import json
 import os
 import requests
 import xml.etree.ElementTree as ET
+
+from rich.console import Console
+from rich.table import Table
 from utils import colourise, get_env_settings
 
 __author__    = "Giuseppe LA ROCCA"
 __email__     = "giuseppe.larocca@egi.eu"
-__version__   = "$Revision: 0.5"
-__date__      = "$Date: 29/03/2024 18:23:17"
+__version__   = "$Revision: 0.6"
+__date__      = "$Date: 15/04/2024 18:23:17"
 __copyright__ = "Copyright (c) 2024 EGI Foundation"
 __license__   = "Apache Licence v2.0"
 
@@ -107,7 +110,7 @@ def main():
 
     # Initialise the environment settings
     research_products = []
-    tot_research_products = 0
+    tot_research_product = 0
 
     env = get_env_settings()
     verbose = env['LOG']
@@ -120,27 +123,40 @@ def main():
     # Download the full list of the OpenAIRE Research Products
     print(colourise("cyan", "\n[%s]" %env['LOG']), \
                " Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress")
+    print("\t This operation may take few minutes to complete. Please wait!")
     
-    print("\t This operation may take few minutes. Please wait!")
-    
-    print(colourise("green", "\n[ SUMMARY REPORT ]"))
-    print("- OpenAIRE Research Products (RPs)")
+    print(colourise("green", "\n[REPORT]"))
    
     research_products = {"publications", "datasets", "software", "other", "researchProducts"}
 
+    console = Console()
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("OpenAIRE Research Products", style="dim", width=30)
+    table.add_column("Total", justify="right")
+    table.add_column("From")
+    table.add_column("To")
+    
     for product in research_products:
         get_OpenAIRE_Research_Products(env, product)
-
         # Parse the XML file
-        tot_research_products, research_products = parseXML(env)
+        tot_research_product, research_products = parseXML(env)
 
-        print(colourise("green", "\n[TYPE]"), product.upper())
-        print("       |--> Total = %s" %tot_research_products)
+        if "researchProducts" in product:
+           table.add_row(
+             "[red]-" + product.upper() + "[/red]", 
+             "[bold]" + tot_research_product + "[/bold]", 
+             env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'],
+             env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
+
+        else:
+           table.add_row(
+             "-" + product.upper(), 
+             tot_research_product, 
+             env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'],
+             env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
     
-    print(colourise("green", "\n[REPORTING PERIOD]"))
-    print("  |--> From  = %s" %env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'])
-    print("  |--> To    = %s" %env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
-    
+    console.print(table)
+
 
 if __name__ == "__main__":
         main()
