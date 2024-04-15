@@ -18,9 +18,11 @@
 import json
 import os
 import requests
+import time
 import xml.etree.ElementTree as ET
 
 from rich.console import Console
+from rich.progress import Progress
 from rich.table import Table
 from utils import colourise, get_env_settings
 
@@ -43,12 +45,22 @@ def get_OpenAIRE_Research_Products(env, research_product):
           + "&size=" + env['OPENAIRE_PAGE_SIZE'] \
           + "&sortBy=resultdateofacceptance,descending"
 
-    #print(url)
     resp = requests.get(url) 
 
     # Saving the list of OpenAIRE Research Products in the XML file 
     with open(os.getcwd() + "/" + env['FILENAME'], 'wb') as f: 
-        f.write(resp.content)
+    
+         with Progress() as progress:
+              task = progress.add_task(
+                      "[yellow]Downloading (" +research_product +")", 
+                      total = int(env['OPENAIRE_PAGE_SIZE'])
+                    )
+    
+              while not progress.finished:
+                    progress.update(task, advance = 0.5)
+                    time.sleep(0.05)
+        
+         f.write(resp.content)
 
 
 def parseXML(env):
@@ -111,6 +123,7 @@ def main():
     # Initialise the environment settings
     research_products = []
     tot_research_product = 0
+    research_products = {"publications", "datasets", "software", "other", "researchProducts"}
 
     env = get_env_settings()
     verbose = env['LOG']
@@ -123,12 +136,8 @@ def main():
     # Download the full list of the OpenAIRE Research Products
     print(colourise("cyan", "\n[%s]" %env['LOG']), \
                " Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress")
-    print("\t This operation may take few minutes to complete. Please wait!")
+    print("\t This operation may take few minutes to complete. Please wait!\n")
     
-    print(colourise("green", "\n[REPORT]"))
-   
-    research_products = {"publications", "datasets", "software", "other", "researchProducts"}
-
     console = Console()
     table = Table(show_header=True, header_style="bold magenta")
     table.add_column("OpenAIRE Research Products", style="dim", width=30)
@@ -143,18 +152,19 @@ def main():
 
         if "researchProducts" in product:
            table.add_row(
-             "[red]-" + product.upper() + "[/red]", 
+             "[red]-" + product + "[/red]", 
              "[bold]" + tot_research_product + "[/bold]", 
              env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'],
              env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
 
         else:
            table.add_row(
-             "-" + product.upper(), 
+             "-" + product, 
              tot_research_product, 
              env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'],
              env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
     
+    print(colourise("green", "\n[REPORT]"))
     console.print(table)
 
 
