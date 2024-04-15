@@ -58,18 +58,16 @@ Verbose Level = DEBUG
 [DEBUG]  Downloading *Research Products* from the OpenAIRE dashboard in progress
 	 This operation may take few minutes. Please wait!
 
-[ SUMMARY REPORT ]
-- OpenAIRE Research Products (RPs)
-
-[TYPE] PUBLICATIONS, Total 3,204
-[TYPE] DATASETS, Total 5,353
-[TYPE] SOFTWARE, Total 15
-[TYPE] OTHER, Total 131
-[TYPE] RESEARCHPRODUCTS, Total 8,703
-
-[REPORTING PERIOD]
-  |--> From  = 2023-01-01
-  |--> To    = 2023-12-31
+[REPORT]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ OpenAIRE Research Products     ┃ Total ┃ From       ┃ To         ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ -RESEARCHPRODUCTS              │  8703 │ 2023-01-01 │ 2023-12-31 │
+│ -DATASETS                      │  5353 │ 2023-01-01 │ 2023-12-31 │
+│ -OTHER                         │   131 │ 2023-01-01 │ 2023-12-31 │
+│ -PUBLICATIONS                  │  3204 │ 2023-01-01 │ 2023-12-31 │
+│ -SOFTWARE                      │    15 │ 2023-01-01 │ 2023-12-31 │
+└────────────────────────────────┴───────┴────────────┴────────────┘
 ```
 
 ## References
