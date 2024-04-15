@@ -56,7 +56,7 @@ Verbose Level = DEBUG
 }
 
 [DEBUG]  Downloading *Research Products* from the OpenAIRE dashboard in progress
-	 This operation may take few minutes. Please wait!
+	 This operation may take few minutes to complete. Please wait!
 
 [REPORT]
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
