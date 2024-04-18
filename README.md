@@ -55,25 +55,49 @@ Verbose Level = DEBUG
     "FILENAME": "OA_research_products.xml"
 }
 
-[DEBUG]  Downloading *Research Products* from the OpenAIRE dashboard in progress
+[DEBUG]  Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress
 	 This operation may take few minutes to complete. Please wait!
 
-Downloading (software) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
-Downloading (researchProducts) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
-Downloading (other) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Downloading (publications) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Downloading (software) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Downloading (other) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Downloading (datasets) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Downloading (researchProducts) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 
-[REPORT]
+[INFO]  Breakdown of the OpenAIRE research products in the reporting period
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
 ┃ OpenAIRE Research Products     ┃ Total ┃ From       ┃ To         ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━┩
-│ -software                      │    15 │ 2023-01-01 │ 2023-12-31 │
-│ -researchProducts              │  8703 │ 2023-01-01 │ 2023-12-31 │
-│ -other                         │   131 │ 2023-01-01 │ 2023-12-31 │
 │ -publications                  │  3204 │ 2023-01-01 │ 2023-12-31 │
+│ -software                      │    14 │ 2023-01-01 │ 2023-12-31 │
+│ -other                         │   131 │ 2023-01-01 │ 2023-12-31 │
 │ -datasets                      │  5353 │ 2023-01-01 │ 2023-12-31 │
+│ -researchProducts              │  8702 │ 2023-01-01 │ 2023-12-31 │
 └────────────────────────────────┴───────┴────────────┴────────────┘
+[INFO]  List of scientific publications produced in the reporting period
+┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┓
+┃ #      ┃ Title                                                                            ┃ Creator(s)           ┃ DateOfAccepta… ┃
+┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━┩
+│ 1      │ Blue-Cloud 2026 - D2.2 New Blue Data Infrastructures – Service Analysis Report   │ Schaap, Dick         │ 2023-12-28     │
+│ 2      │ Search for flavour-changing neutral tqH interactions with H → γγ in pp           │ Yu. Volkotrub        │ 2023-12-28     │
+│        │ collisions at $$ \sqrt{s} $$ = 13 TeV using the ATLAS detector                   │                      │                │
+│ 3      │ Probing Small Bjorken-x Nuclear Gluonic Structure via Coherent J/ψ               │ Tuuva, T.            │ 2023-12-28     │
+│        │ Photoproduction in Ultraperipheral Pb-Pb Collisions at √sNN = 5.02 TeV           │                      │                │
+│ 4      │ Search for resonances in events with photon and jet final states in              │ Tcherniaev, Evgueni  │ 2023-12-28     │
+│        │ proton-proton collisions at $$ \sqrt{s} $$ = 13 TeV                              │                      │                │
+│ 5      │ Blue-Cloud 2026 - D2.1 Existing DD&AS and Blue Data Infrastructures – Review and │ Schaap, Dick         │ 2023-12-28     │
+│        │ Specifications for Optimisation Report                                           │                      │                │
+│ 6      │ EOSC-Future Test Science Project "META-COVID": Linked resources between          │ Holub, Petr          │ 2023-12-27     │
+│        │ BBMRI-ERIC Directory and ECRIN Metadata Repository                               │                      │                │
+│ 7      │ Search for direct production of electroweakinos in final states with one lepton, │ Zou, Wenkai          │ 2023-12-27     │
+│        │ jets and missing transverse momentum in pp collisions at $$ \sqrt{s} $$ = 13 TeV │                      │                │
+│        │ with the ATLAS detector                                                          │                      │                │
+│ 8      │ Cascaded Bilinear Mapping Collaborative Hybrid Attention Modality Fusion Model   │ Kuizhi Mei           │ 2023-12-24     │
+│ 9      │ Measurements of ${\Lambda_{\rm c}^+\rm /D^0}$ ratio as a function of             │ Sheibani, Oveis      │ 2023-12-24     │
+│        │ multiplicity at midrapidity at $ \sqrt{s_{\text{NN}}} = 5.02\; \text{TeV}$       │                      │                │
+│ 10     │ Multiplicity dependence of $\sigma_{\psi(2S)}/\sigma_{J/\psi}$ in $pp$           │ Colombo, T.          │ 2023-12-23     │
+│        │ collisions at $\sqrt{s}=13$ TeV                                                  │                      │                │
+└────────┴──────────────────────────────────────────────────────────────────────────────────┴──────────────────────┴────────────────┘```
 ```
 
 ## References
