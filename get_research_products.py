@@ -28,8 +28,8 @@ from utils import colourise, get_env_settings
 
 __author__    = "Giuseppe LA ROCCA"
 __email__     = "giuseppe.larocca@egi.eu"
-__version__   = "$Revision: 0.6"
-__date__      = "$Date: 15/04/2024 18:23:17"
+__version__   = "$Revision: 0.7"
+__date__      = "$Date: 17/04/2024 18:23:17"
 __copyright__ = "Copyright (c) 2024 EGI Foundation"
 __license__   = "Apache Licence v2.0"
 
@@ -124,6 +124,7 @@ def main():
     research_products = []
     tot_research_product = 0
     research_products = {"publications", "datasets", "software", "other", "researchProducts"}
+    #research_products = {"publications"}
 
     env = get_env_settings()
     verbose = env['LOG']
@@ -144,7 +145,15 @@ def main():
     table.add_column("Total", justify="right")
     table.add_column("From")
     table.add_column("To")
+
+    table_pub = Table(show_header=True, header_style="bold magenta")
+    table_pub.add_column("#", style="dim", width=6)
+    table_pub.add_column("Title", style="dim", width=80)
+    table_pub.add_column("Creator(s)", width=20)
+    #table_pub.add_column("Publisher", width=20)
+    table_pub.add_column("DateOfAcceptance", width=15)
     
+    index = 1
     for product in research_products:
         get_OpenAIRE_Research_Products(env, product)
         # Parse the XML file
@@ -152,20 +161,46 @@ def main():
 
         if "researchProducts" in product:
            table.add_row(
-             "[red]-" + product + "[/red]", 
+             "[red][bold]-" + product + "[/bold][/red]", 
              "[bold]" + tot_research_product + "[/bold]", 
              env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'],
              env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
 
         else:
+           if "publications" in product:
+               index = 1
+               for publication in research_products:
+                   if (index % 2) == 0:
+                      table_pub.add_row(
+                         str(index),     
+                         "[bold][yellow]" + publication['Title'] + "[/yellow][/bold]",
+                         "[bold][yellow]" + publication['Creator(s)'] + "[/yellow][/bold]",
+                         #"[bold][yellow]" + publication['Publisher'] + "[/yellow][/bold]",
+                         "[bold][yellow]" + publication['DateOfAcceptance'] + "[/yellow][/bold]"
+                      )
+
+                   else:   
+                      table_pub.add_row(
+                         str(index),     
+                         publication['Title'],
+                         publication['Creator(s)'],
+                         #publication['Publisher'],
+                         publication['DateOfAcceptance']
+                      )
+                   
+                   index = index + 1    
+            
            table.add_row(
-             "-" + product, 
+             "-" + str(product), 
              tot_research_product, 
              env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'],
              env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'])
-    
-    print(colourise("green", "\n[REPORT]"))
+        
+    print(colourise("green", "\n[INFO]"), " Breakdown of the OpenAIRE research products in the reporting period")
     console.print(table)
+    
+    print(colourise("green", "[INFO]"), " List of scientific publications produced in the reporting period")
+    console.print(table_pub)
 
 
 if __name__ == "__main__":
