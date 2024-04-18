@@ -1,5 +1,5 @@
 # OpenAIRE_research_products
-This repository use the APIs to extract **Research Products** from the [EGI's OpenAIRE dashboard](https://egi.openaire.eu/)
+This repository use the openAIRE APIs to extract **Research Products** from the [EGI's OpenAIRE community dashboard](https://egi.openaire.eu/)
 
 Available **Research Products** are: 
 - Publications,
