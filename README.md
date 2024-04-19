@@ -58,11 +58,11 @@ Verbose Level = DEBUG
 [DEBUG]  Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress
 	 This operation may take few minutes to complete. Please wait!
 
-Downloading (publications) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
-Downloading (software) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
-Downloading (other) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
-Downloading (datasets) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
-Downloading (researchProducts) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+  Downloading (researchProducts) 0:00:03
+  Downloading (datasets) 0:00:02
+  Downloading (software) 0:00:01
+  Downloading (other) 0:00:02
+  Downloading (publications) 0:00:04
 
 [INFO]  Breakdown of the OpenAIRE research products in the reporting period
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
