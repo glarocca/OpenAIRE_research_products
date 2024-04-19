@@ -22,7 +22,12 @@ import time
 import xml.etree.ElementTree as ET
 
 from rich.console import Console
-from rich.progress import Progress
+from rich.progress import (
+    Progress,
+    SpinnerColumn,
+    TextColumn,
+    TimeElapsedColumn,
+)
 from rich.table import Table
 from utils import colourise, get_env_settings
 
@@ -35,32 +40,38 @@ __license__   = "Apache Licence v2.0"
 
 
 def get_OpenAIRE_Research_Products(env, research_product): 
-    ''' Get the full list of Open Access Research Products from the OpenAIRE dashboard '''
+    ''' Get the full list of Research Products from the OpenAIRE dashboard '''
   
-    url = env['OPENAIRE_API_SERVER_URL'] \
-          + "search/" + research_product \
-          + "?community=" + env['OPENAIRE_COMMUNITY'] \
-          + "&fromDateAccepted=" + env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'] \
-          + "&toDateAccepted=" + env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'] \
-          + "&size=" + env['OPENAIRE_PAGE_SIZE'] \
-          + "&sortBy=resultdateofacceptance,descending"
-
-    resp = requests.get(url) 
-
     # Saving the list of OpenAIRE Research Products in the XML file 
     with open(os.getcwd() + "/" + env['FILENAME'], 'wb') as f: 
     
-         with Progress() as progress:
+         with Progress(
+                 SpinnerColumn(),
+                 TextColumn("[progress.description]{task.description}"),
+                 TimeElapsedColumn(),
+                 transient=False,
+         ) as progress:
               task = progress.add_task(
                       "[yellow]Downloading (" +research_product +")", 
-                      total = int(env['OPENAIRE_PAGE_SIZE'])
-                    )
+                      total = 1 
+                     )
+
+              # Do the work...
+              url = env['OPENAIRE_API_SERVER_URL'] \
+                  + "search/" + research_product \
+                  + "?community=" + env['OPENAIRE_COMMUNITY'] \
+                  + "&fromDateAccepted=" + env['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'] \
+                  + "&toDateAccepted=" + env['OPENAIRE_TO_DATE_OF_ACCEPTANCE'] \
+                  + "&size=" + env['OPENAIRE_PAGE_SIZE'] \
+                  + "&sortBy=resultdateofacceptance,descending"
+
+              resp = requests.get(url)
     
               while not progress.finished:
                     progress.update(task, advance = 0.5)
-                    time.sleep(0.05)
+                    time.sleep(1)
         
-         f.write(resp.content)
+              f.write(resp.content)
 
 
 def parseXML(env):
@@ -124,7 +135,6 @@ def main():
     research_products = []
     tot_research_product = 0
     research_products = {"publications", "datasets", "software", "other", "researchProducts"}
-    #research_products = {"publications"}
 
     env = get_env_settings()
     verbose = env['LOG']
