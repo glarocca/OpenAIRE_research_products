@@ -138,6 +138,7 @@ https://api.openaire.eu/search/publications?community=egi&fromDateAccepted=2024-
 ```
 
 The full list of publications are updated in the Google worksheet (tab `Publications 2024`)
+Duplicates are stored in the `DUPLICATES` file.
 
 ## References
 
