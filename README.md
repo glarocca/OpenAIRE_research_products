@@ -16,6 +16,30 @@ Research Products will be parsed with the [xml.etree.ElementTree](https://docs.p
 ## Pre-requisites
 * `Python 3.10.12+` installed on your local compute
 
+## Creating a Google Service Account
+
+In order to read from and write data to Google Sheets in Python,
+we will have to create a **Google Service Account**.
+
+**Instructions** to create a Google Service Account are the following:
+
+* Head over to [Google developer console](https://console.cloud.google.com/)
+* Click on **Create Project** to create a new project
+* Fill in the required fields and click on **Create**
+* From the APIs & Services menu, click on **Enable API and Services**
+* Search for "Google Drive API" and click on **Enable**
+* Search for the "Google Sheets API" and click on **Enable**
+* From the APIs & Services menu, click on **Credentials**
+* From the "Credentials" menu, click on **Create Credentials** to create a new credentials account
+* From the Credentials account, select **Service Account**
+* Fill in the web form providing the name of the Service account name and click on "Create" and Continue
+* Skip the step 3 to grant users access to this service account
+* Click on **Done**
+* Once the Service Account has been created, click on **Keys** and click on "Add new Keys" and select JSON
+* The credentials will be created and downloaded as a JSON file
+* Copy the JSON file to your code directory and rename it to `credentials.json`
+* Grant **Edit** rights to the **Service Account** in the Google Spread-sheet
+
 ## Configure the general settings
 Edit the `openrc.sh` file and configure the settings.
 
@@ -112,6 +136,8 @@ https://api.openaire.eu/search/publications?community=egi&fromDateAccepted=2024-
 [INFO] 7) [Title]: Search for Baryon Number Violation in Top Quark Production and Decay Using Proton-Proton Collisions at √=13  TeV [..], [Authors]: Petrow, H., [Publisher]: American Physical Society (APS), [Date]: 2024-11-06
 [..]
 ```
+
+The full list of publications are updated in the Google worksheet (tab `Publications 2024`)
 
 ## References
 
