@@ -126,10 +126,18 @@ def get_env_settings():
            d['OPENAIRE_FROM_DATE_OF_ACCEPTANCE'] = os.environ['OPENAIRE_FROM_DATE_OF_ACCEPTANCE']
            d['OPENAIRE_TO_DATE_OF_ACCEPTANCE'] = os.environ['OPENAIRE_TO_DATE_OF_ACCEPTANCE']
            d['OPENAIRE_PAGE_SIZE'] = os.environ['OPENAIRE_PAGE_SIZE']
+           d['OPENAIRE_RESEARCH_OBJECT'] = os.environ['OPENAIRE_RESEARCH_OBJECT']
+
+           # Google Worksheet settings
+           d['SERVICE_ACCOUNT_PATH'] = os.environ['SERVICE_ACCOUNT_PATH']
+           d['SERVICE_ACCOUNT_FILE'] = os.environ['SERVICE_ACCOUNT_FILE']
+           d['GOOGLE_SHEET_NAME'] = os.environ['GOOGLE_SHEET_NAME']
+           d['GOOGLE_PUBLICATIONS_WORKSHEET'] = os.environ['GOOGLE_PUBLICATIONS_WORKSHEET']
            
            # Generic settings
            d['LOG'] = os.environ['LOG']
            d['FILENAME'] = os.environ['FILENAME']
+           d['DUPLICATES'] = os.environ['DUPLICATES']
 
         except Exception:
           print(colourise("red", "ERROR: os.environment settings not found!"))

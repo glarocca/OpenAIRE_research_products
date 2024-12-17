@@ -20,7 +20,7 @@ export OPENAIRE_RESEARCH_PRODUCT="publications"
 export OPENAIRE_FROM_DATE_OF_ACCEPTANCE="2023-01-01"
 export OPENAIRE_TO_DATE_OF_ACCEPTANCE="2023-12-31"   
 export OPENAIRE_OPEN_ACCESS="false"
-export OPENAIRE_PAGE_SIZE="10"
+export OPENAIRE_PAGE_SIZE="100"
 
 # Full list of the OpenAIRE paramenters:
 # -openairePublicationID, 
@@ -59,7 +59,16 @@ export OPENAIRE_PAGE_SIZE="10"
 # -sortBy, 
 # -page
 
+###########################################################
+# G O O G L E ** S P R E A D S H E E T ** S E T T I N G S #
+###########################################################
+export SERVICE_ACCOUNT_PATH=${PWD}"/.config/"
+export SERVICE_ACCOUNT_FILE=${SERVICE_ACCOUNT_PATH}"service_account.json"
+export GOOGLE_SHEET_NAME="EGI numbers"
+export GOOGLE_PUBLICATIONS_WORKSHEET="Publications 2024"
+
 export FILENAME="OA_research_products.xml"
+export DUPLICATES="duplicates.txt"
 
 # LOG=INFO, no verbose logging is 'OFF'
 # LOG=DEBUG, verbose logging is 'ON'
