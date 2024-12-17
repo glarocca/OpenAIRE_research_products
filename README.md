@@ -20,22 +20,40 @@ Research Products will be parsed with the [xml.etree.ElementTree](https://docs.p
 Edit the `openrc.sh` file and configure the settings.
 
 ```bash
-# EGI's OpenAIRE dashboard settings
+#!/bin/bash
+
+# Settings of the OpenAIRE EGI Dashboard
 export OPENAIRE_API_SERVER_URL="https://api.openaire.eu/"
 export OPENAIRE_COMMUNITY="egi"
 
+# Possible OPENAIRE_RESEARCH_PRODUCT = researchProducts, publications, datasets, software, other
+# - researchProducts = access all the Publications, Research data, Research software, Other research products
+# - publications = access all the Publications
+# - datasets = access all the Datasets
+# - sowtware = access all the Software
+# - other = access all the Other research products
 export OPENAIRE_RESEARCH_PRODUCT="publications"
 
 # Data format: YYYY-MM-DD
 export OPENAIRE_FROM_DATE_OF_ACCEPTANCE="2023-01-01"
-export OPENAIRE_TO_DATE_OF_ACCEPTANCE="2023-12-31"
+export OPENAIRE_TO_DATE_OF_ACCEPTANCE="2023-12-31"   
+export OPENAIRE_OPEN_ACCESS="false"
+export OPENAIRE_PAGE_SIZE="100"
 
-export OPENAIRE_PAGE_SIZE="10"
+###########################################################
+# G O O G L E ** S P R E A D S H E E T ** S E T T I N G S #
+###########################################################
+export SERVICE_ACCOUNT_PATH=${PWD}"/.config/"
+export SERVICE_ACCOUNT_FILE=${SERVICE_ACCOUNT_PATH}"service_account.json"
+export GOOGLE_SHEET_NAME="EGI numbers"
+export GOOGLE_PUBLICATIONS_WORKSHEET="Publications 2024"
 
 export FILENAME="OA_research_products.xml"
+export DUPLICATES="duplicates.txt"
 
 # LOG=INFO, no verbose logging is 'OFF'
 # LOG=DEBUG, verbose logging is 'ON'
+#export LOG="INFO"
 export LOG="DEBUG"
 ```
 
@@ -43,61 +61,56 @@ export LOG="DEBUG"
 ```bash
 Verbose Level = DEBUG
 
-[DEBUG]  Variables settings
+[DEBUG] Environmental settings
 {
     "OPENAIRE_API_SERVER_URL": "https://api.openaire.eu/",
     "OPENAIRE_COMMUNITY": "egi",
     "OPENAIRE_OPEN_ACCESS": "true",
-    "OPENAIRE_FROM_DATE_OF_ACCEPTANCE": "2023-01-01",
-    "OPENAIRE_TO_DATE_OF_ACCEPTANCE": "2023-12-31",
-    "OPENAIRE_PAGE_SIZE": "10",
+    "OPENAIRE_FROM_DATE_OF_ACCEPTANCE": "2024-01-01",
+    "OPENAIRE_TO_DATE_OF_ACCEPTANCE": "2024-12-31",
+    "OPENAIRE_PAGE_SIZE": "100",
+    "OPENAIRE_RESEARCH_OBJECT": "publications",
+    "SERVICE_ACCOUNT_PATH": "/home/larocca/modules/APIs/OpenAIRE/.config/",
+    "SERVICE_ACCOUNT_FILE": "/home/larocca/modules/APIs/OpenAIRE/.config/service_account.json",
+    "GOOGLE_SHEET_NAME": "EGI numbers",
+    "GOOGLE_PUBLICATIONS_WORKSHEET": "Publications 2024",
     "LOG": "DEBUG",
-    "FILENAME": "OA_research_products.xml"
+    "FILENAME": "OA_research_products.xml",
+    "DUPLICATES": "duplicates.txt"
 }
 
-[DEBUG]  Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress
-	 This operation may take few minutes to complete. Please wait!
+[DEBUG] Initialise the headers of the GWorkSheet 'EGI numbers' in progress...
+	This operation may take few minutes to complete. Please wait!
 
-  Downloading (researchProducts) 0:00:03
-  Downloading (datasets) 0:00:02
-  Downloading (software) 0:00:01
-  Downloading (other) 0:00:02
-  Downloading (publications) 0:00:04
+[DEBUG] Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress
+	This operation may take few minutes to complete. Please wait!
 
-[INFO]  Breakdown of the OpenAIRE research products in the reporting period
+  Downloading (software) in progress... 0:00:02
+  Downloading (other) in progress... 0:00:01
+  Downloading (datasets) in progress... 0:00:01
+  Downloading (publications) in progress... 0:00:01
+
+[INFO] Breakdown of the OpenAIRE Research Products [publications] in the reporting period
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
 ┃ OpenAIRE Research Products     ┃ Total ┃ From       ┃ To         ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━┩
-│ -publications                  │  3204 │ 2023-01-01 │ 2023-12-31 │
-│ -software                      │    14 │ 2023-01-01 │ 2023-12-31 │
-│ -other                         │   131 │ 2023-01-01 │ 2023-12-31 │
-│ -datasets                      │  5353 │ 2023-01-01 │ 2023-12-31 │
-│ -researchProducts              │  8702 │ 2023-01-01 │ 2023-12-31 │
+│ -software                      │    11 │ 2024-01-01 │ 2024-12-31 │
+│ -other                         │   275 │ 2024-01-01 │ 2024-12-31 │
+│ -datasets                      │  3808 │ 2024-01-01 │ 2024-12-31 │
+│ -publications                  │  1798 │ 2024-01-01 │ 2024-12-31 │
 └────────────────────────────────┴───────┴────────────┴────────────┘
-[INFO]  List of scientific publications produced in the reporting period
-┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┓
-┃ #      ┃ Title                                                                            ┃ Creator(s)           ┃ DateOfAccepta… ┃
-┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━┩
-│ 1      │ Blue-Cloud 2026 - D2.2 New Blue Data Infrastructures – Service Analysis Report   │ Schaap, Dick         │ 2023-12-28     │
-│ 2      │ Search for flavour-changing neutral tqH interactions with H → γγ in pp           │ Yu. Volkotrub        │ 2023-12-28     │
-│        │ collisions at $$ \sqrt{s} $$ = 13 TeV using the ATLAS detector                   │                      │                │
-│ 3      │ Probing Small Bjorken-x Nuclear Gluonic Structure via Coherent J/ψ               │ Tuuva, T.            │ 2023-12-28     │
-│        │ Photoproduction in Ultraperipheral Pb-Pb Collisions at √sNN = 5.02 TeV           │                      │                │
-│ 4      │ Search for resonances in events with photon and jet final states in              │ Tcherniaev, Evgueni  │ 2023-12-28     │
-│        │ proton-proton collisions at $$ \sqrt{s} $$ = 13 TeV                              │                      │                │
-│ 5      │ Blue-Cloud 2026 - D2.1 Existing DD&AS and Blue Data Infrastructures – Review and │ Schaap, Dick         │ 2023-12-28     │
-│        │ Specifications for Optimisation Report                                           │                      │                │
-│ 6      │ EOSC-Future Test Science Project "META-COVID": Linked resources between          │ Holub, Petr          │ 2023-12-27     │
-│        │ BBMRI-ERIC Directory and ECRIN Metadata Repository                               │                      │                │
-│ 7      │ Search for direct production of electroweakinos in final states with one lepton, │ Zou, Wenkai          │ 2023-12-27     │
-│        │ jets and missing transverse momentum in pp collisions at $$ \sqrt{s} $$ = 13 TeV │                      │                │
-│        │ with the ATLAS detector                                                          │                      │                │
-│ 8      │ Cascaded Bilinear Mapping Collaborative Hybrid Attention Modality Fusion Model   │ Kuizhi Mei           │ 2023-12-24     │
-│ 9      │ Measurements of ${\Lambda_{\rm c}^+\rm /D^0}$ ratio as a function of             │ Sheibani, Oveis      │ 2023-12-24     │
-│        │ multiplicity at midrapidity at $ \sqrt{s_{\text{NN}}} = 5.02\; \text{TeV}$       │                      │                │
-│ 10     │ Multiplicity dependence of $\sigma_{\psi(2S)}/\sigma_{J/\psi}$ in $pp$           │ Colombo, T.          │ 2023-12-23     │
-│        │ collisions at $\sqrt{s}=13$ TeV                                                  │                      │                │
-└────────┴──────────────────────────────────────────────────────────────────────────────────┴──────────────────────┴────────────────┘```
+[INFO] Total research objects = 1798, Max pages = 18, Page Size = 100
+
+[INFO] Downloading [RO: publications] *100* from page [1] in progress...
+https://api.openaire.eu/search/publications?community=egi&fromDateAccepted=2024-01-01&toDateAccepted=2024-12-31&page=1&size=100&sortBy=resultdateofacceptance,descending
+[INFO] 1) [Title]: Fusion innovation: Multi-scale dilated collaborative model of ConvNeXt and MSDA for fault diagnosis [..], [Authors]: Fulei Chu, [Publisher]: Elsevier BV, [Date]: 2024-12-01
+[INFO] 2) [Title]: Light-favor particle production in high-multiplicity pp collisions at √s = 13 TeV as a function of transverse spherocity [..], [Authors]: Virta, Maxim Mikael Olavi, [Publisher]: Springer, [Date]: 2024-11-08
+[INFO] 3) [Title]: Nonresonant central exclusive production of charged-hadron pairs in proton-proton collisions at √ = 13  TeV [..], [Authors]: Petrow, H., [Publisher]: American Physical Society (APS), [Date]: 2024-11-08
+[INFO] 4) [Title]: Search for long-lived particles decaying to final states with a pair of muons in proton-proton collisions at √s = 13.6 TeV [..], [Authors]: Petrow, H., [Publisher]: Springer, [Date]: 2024-11-08
+[INFO] 5) [Title]: Combination of Measurements of the Top Quark Mass from Data Collected by the ATLAS and CMS Experiments at √=7 and 8 TeV [..], [Authors]: Tuuva, T., [Publisher]: American Physical Society (APS), [Date]: 2024-11-07
+[INFO] 6) [Title]: Search for heavy neutral leptons in fnal states with electrons, muons, and hadronically decaying tau leptons in proton-proton collisions at √s = 13 Te [..], [Authors]: Petrow, H., [Publisher]: Springer, [Date]: 2024-11-06
+[INFO] 7) [Title]: Search for Baryon Number Violation in Top Quark Production and Decay Using Proton-Proton Collisions at √=13  TeV [..], [Authors]: Petrow, H., [Publisher]: American Physical Society (APS), [Date]: 2024-11-06
+[..]
 ```
 
 ## References
