@@ -81,7 +81,7 @@ export DUPLICATES="duplicates.txt"
 export LOG="DEBUG"
 ```
 
-## Retrieve the Research Products from the EGI's OpenAIRE dashboard
+## Retrieve the list of publications from the EGI's OpenAIRE dashboard
 ```bash
 Verbose Level = DEBUG
 
