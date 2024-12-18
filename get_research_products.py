@@ -50,7 +50,7 @@ def configure_headers(env, worksheet):
 
     print(colourise("green", "\n[%s]" %env['LOG']), \
     "Initialise the headers of the GWorkSheet '%s' in progress..." %env['GOOGLE_SHEET_NAME'])
-    print("\tThis operation may take few minutes to complete. Please wait!")
+    print("\t This operation may take few minutes to complete. Please wait!")
 
     # Clear all the cells of the GWorkSheet
     worksheet.batch_clear(["A1:E3000"])
@@ -127,8 +127,8 @@ def get_research_object(env, page_index):
     ''' Get the list of research object '''
 
     print(colourise("green", "\n[INFO]"), \
-    "Downloading [RO: %s] *%s* from page [%s] in progress..." \
-    %(env['OPENAIRE_RESEARCH_OBJECT'], env['OPENAIRE_PAGE_SIZE'], page_index))
+    "Downloading *%s* [RO: %s] (from page [%s]) in progress..." \
+    %(env['OPENAIRE_PAGE_SIZE'], env['OPENAIRE_RESEARCH_OBJECT'], page_index))
 
     # Saving the list of OpenAIRE Research Products in the XML file 
     with open(os.getcwd() + "/" + env['FILENAME'], 'wb') as f:
@@ -142,10 +142,10 @@ def get_research_object(env, page_index):
              + "&size=" + str(env['OPENAIRE_PAGE_SIZE']) \
              + "&sortBy=resultdateofacceptance,descending"
 
-         print(url)    
-
          response = requests.get(url)
          f.write(response.content)
+
+    f.close()
 
 
 def parseXML(env):
@@ -229,7 +229,7 @@ def main():
     # 2. Get the full list of the OpenAIRE Research Products
     print(colourise("cyan", "\n[%s]" %env['LOG']), \
     "Downloading *Research Products* from the EGI's OpenAIRE dashboard in progress")
-    print("\tThis operation may take few minutes to complete. Please wait!\n")
+    print("\t This operation may take few minutes to complete. Please wait!\n")
     
     console = Console()
     table = Table(show_header = True, header_style = "bold magenta")
@@ -259,6 +259,7 @@ def main():
     tot_software = 0
     tot_datasets = 0
     tot_other = 0
+
     for product in research_products:
         get_OpenAIRE_Research_Products(env, product)
         # Parse the XML file
@@ -309,7 +310,7 @@ def main():
 
     # 3. Retrieve the full list of *Research Objects* from the dashboard
     duplicates = []
-    research_objects = []
+    list_research_objects = []
 
     page_index = 1 
     pos = 1
@@ -344,42 +345,35 @@ def main():
         # Parse the XML file
         tot_research_product, research_products = parseXML(env)
 
-        try:
-            for research_object in research_products:
-                # Check if research_object['Title'] is NOT a duplicate
-                if research_object['Title'] not in research_objects:
-                   research_objects.append(research_object['Title'])
+        for research_object in research_products:
+            # Check if research_object['Title'] (dict) is NOT a duplicate
+            if research_object['Title'] not in list_research_objects:
+               list_research_objects.append(research_object['Title'])
 
-                   # Publish into the GSpread Worksheet
-                   print(colourise("yellow", "[INFO]"), \
-                   "%s) [Title]: %s [..], [Authors]: %s, [Publisher]: %s, [Date]: %s" \
-                   %(pos, research_object['Title'][0:150], research_object['Creator(s)'],
-                          research_object['Publisher'], research_object['DateOfAcceptance']))
+               # Publishing into the GSpread Worksheet
+               print(colourise("yellow", "[INFO]"), \
+                     "%s) [Title]: %s [..], [Authors]: %s, [Publisher]: %s, [Date]: %s" \
+                      %(pos, research_object['Title'][0:150], research_object['Creator(s)'],
+                             research_object['Publisher'], research_object['DateOfAcceptance']))
 
-                   worksheet.update_cell(pos + 8, 1, pos)
-                   worksheet.update_cell(pos + 8, 2, research_object['Title'])
-                   worksheet.update_cell(pos + 8, 3, research_object['Creator(s)'])
-                   worksheet.update_cell(pos + 8, 4, research_object['Publisher'])
-                   worksheet.update_cell(pos + 8, 5, research_object['DateOfAcceptance'])
+               worksheet.update_cell(pos + 8, 1, pos)
+               worksheet.update_cell(pos + 8, 2, research_object['Title'])
+               worksheet.update_cell(pos + 8, 3, research_object['Creator(s)'])
+               worksheet.update_cell(pos + 8, 4, research_object['Publisher'])
+               worksheet.update_cell(pos + 8, 5, research_object['DateOfAcceptance'])
+               time.sleep(5)
 
-                   pos = pos + 1     
+               pos = pos + 1     
 
-                elif research_object['Title'] not in duplicates:
-                     duplicates.append(research_object['Title'])
-                     print(colourise("red", "[INFO]"), \
-                     "[DUPLICATE FOUND] - SKIPPING REGISTRATION OF THE PUBLICATION!")
-                     pri nt(colourise("red", "[DEBUG]"), \
-                     "[Title]: %s [..], [Authors]: %s, [Publisher]: %s, [Date]: %s" \
-                     %(research_object['Title'][0:150], research_object['Creator(s)'],
-                     research_object['Publisher'], research_object['DateOfAcceptance']))
+            elif research_object['Title'] not in duplicates:
+                 duplicates.append(research_object['Title'])
+                 print(colourise("red", "[INFO]"), \
+                 "[DUPLICATE FOUND] - SKIPPING REGISTRATION OF THE PUBLICATION!")
+                 print(colourise("red", "[DEBUG]"), \
+                 "[Title]: %s [..], [Authors]: %s, [Publisher]: %s, [Date]: %s" \
+                 %(research_object['Title'][0:150], research_object['Creator(s)'],
+                   research_object['Publisher'], research_object['DateOfAcceptance']))
     
-        except:
-           print(colourise("red", "[WARNING]"), \
-           "Quota exceeded for metrics: 'Write requests', 'Write requests per minute'")
-           time.sleep (120)
-           pos = pos - 1
-
-
     if len(duplicates):
        print(colourise("red", "\n[WARNING]"), \
        "A total of [%d] duplications have been detected!" %len(duplicates))

@@ -135,6 +135,19 @@ https://api.openaire.eu/search/publications?community=egi&fromDateAccepted=2024-
 [INFO] 6) [Title]: Search for heavy neutral leptons in fnal states with electrons, muons, and hadronically decaying tau leptons in proton-proton collisions at √s = 13 Te [..], [Authors]: Petrow, H., [Publisher]: Springer, [Date]: 2024-11-06
 [INFO] 7) [Title]: Search for Baryon Number Violation in Top Quark Production and Decay Using Proton-Proton Collisions at √=13  TeV [..], [Authors]: Petrow, H., [Publisher]: American Physical Society (APS), [Date]: 2024-11-06
 [..]
+
+[INFO] 1736) [Title]: Search for Heavy Neutral Leptons in Decays of W Bosons Using a Dilepton Displaced Vertex in sqrt[s]=13  TeV pp Collisions with the ATLAS Detector [..], [Authors]: ATLAS Collaboration, [Publisher]: American Physical Society (APS), [Date]: 2024-01-01
+[INFO] 1737) [Title]: Measurement of the Higgs boson production via vector boson fusion and its decay into bottom quarks in proton-proton collisions at √s = 13TeV [..], [Authors]: et al., [Publisher]: ETH Zurich, [Date]: 2024-01-01
+[INFO] 1738) [Title]: Measurement of the top-quark mass using a leptonic invariant mass in $pp$ collisions at $\sqrt{s}=13~\textrm{TeV}$ with the ATLAS detector [..], [Authors]: Aguilar-Saavedra, J. A., [Publisher]: ETH Zurich, [Date]: 2024-01-01
+[INFO] 1739) [Title]: Measurement of the inclusive isolated-photon production cross section in pp collisions at $\sqrt{s}$ = 13 TeV [..], [Authors]: ALICE Collaboration, [Publisher]: arXiv, [Date]: 2024-01-01
+[INFO] 1740) [Title]: The azimuthal correlation between the leading jet and the scattered lepton in deep inelastic scattering at HERA [..], [Authors]: ZEUS Collaboration, [Publisher]: Deutsches Elektronen-Synchrotron, DESY, Hamburg, [Date]: 2024-01-01
+[INFO] 1741) [Title]: Open charm production and asymmetry in pNe collisions at √sNN=68.5GeV [..], [Authors]: LHCb Collaboration, [Publisher]: Springer, [Date]: 2024-01-01
+[INFO] 1742) [Title]: Search for displaced photons produced in exotic decays of the Higgs boson using 13 TeV pp collisions with the ATLAS detector [..], [Authors]: ATLAS Collaboration, [Publisher]: American Physical Society (APS), [Date]: 2024-01-01
+[INFO] 1743) [Title]: Search for $h_b(2P)\toγχ_{bJ}(1P)$ at $\sqrt{s} = 10.860$ GeV [..], [Authors]: Yuan, L., [Publisher]: arXiv, [Date]: 2024-01-01
+[INFO] 1744) [Title]: Measurement of photonuclear jet production in ultra-peripheral Pb+Pb collisions at $\sqrt{s_{\text{NN}}} = 5.02$ TeV with the ATLAS detector [..], [Authors]: ATLAS Collaboration, [Publisher]: arXiv, [Date]: 2024-01-01
+
+[WARNING] A total of [49] duplications have been detected!
+[INFO]  See the file [duplicates.txt] for more details
 ```
 
 The full list of publications are updated in the Google worksheet (tab `Publications 2024`)
